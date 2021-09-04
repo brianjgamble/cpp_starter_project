@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.20)
 project(cpp_starter_project VERSION 0.0.1 LANGUAGES CXX)
 
 # Require C++20 and disable extensions for all targets
@@ -16,7 +16,8 @@ endif ()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-conan_cmake_run(REQUIRES doctest/[>=2.4.0]
+conan_cmake_run(REQUIRES
+        catch2/2.13.7
         BASIC_SETUP CMAKE_TARGETS
         BUILD missing)
 
