@@ -1,5 +1,7 @@
-add_library(test_main STATIC test_main.cpp)
-target_link_libraries(test_main PUBLIC CONAN_PKG::catch2)
+add_executable(tests test_example.cpp)
+target_link_libraries(tests doctest::doctest)
 
-add_executable(tests tests.cpp)
-target_link_libraries(tests PRIVATE test_main)
+add_test(
+        NAME UnitTests
+        COMMAND tests
+)
