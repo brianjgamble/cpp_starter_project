@@ -17,7 +17,7 @@ endif ()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-conan_cmake_configure(REQUIRES doctest/2.4.8
+conan_cmake_configure(REQUIRES catch2/3.0.1
         GENERATORS cmake_find_package)
 
 conan_cmake_autodetect(settings)
@@ -27,7 +27,7 @@ conan_cmake_install(PATH_OR_REFERENCE .
         REMOTE conancenter
         SETTINGS ${settings})
 
-find_package(doctest)
+find_package(Catch2 3 REQUIRED)
 
 add_subdirectory(src)
 enable_testing()
