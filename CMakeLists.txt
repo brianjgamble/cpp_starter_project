@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(cpp_starter_project VERSION 0.0.1 LANGUAGES CXX)
+project(cpp_starter_project VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -17,7 +17,9 @@ endif ()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
-conan_cmake_configure(REQUIRES catch2/3.0.1
+conan_cmake_configure(REQUIRES
+        catch2/3.0.1
+        fmt/9.0.0
         GENERATORS cmake_find_package)
 
 conan_cmake_autodetect(settings)
@@ -28,6 +30,7 @@ conan_cmake_install(PATH_OR_REFERENCE .
         SETTINGS ${settings})
 
 find_package(Catch2 3 REQUIRED)
+find_package(fmt)
 
 add_subdirectory(src)
 enable_testing()
